@@ -1,0 +1,23 @@
+#!/bin/bash
+
+if [[ -f $1 ]]; then
+	echo "Removing $1 executable"
+	echo ""
+	rm $1
+fi
+
+if [[ -f $1'.cpp' ]]; then
+	echo "Compiling $1 file"
+	echo ""
+	g++ -std=c++11 $1'.cpp' -o $1
+else
+	echo "File not found :S"
+fi
+
+if [[ -f $1 ]]; then
+	echo "Executing file"
+	echo ""
+	echo "||| Running >>>"
+	./$1
+fi
+
