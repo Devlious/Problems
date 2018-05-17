@@ -18,13 +18,60 @@
 
 #include <stdio.h>
 
+class Rectangle {
+
+	int weight;
+	int height;
+
+	public:
+
+	virtual void display() {
+		printf("%d %d\n", this->weight, this->height);
+	}
+	void setWeight(int weight) {
+		this->weight = weight;
+	}
+	
+	int getWeight() {
+		return this->weight;
+	}
+
+	void setHeight(int height) {
+		this->height = height;
+	}
+
+	int getHeight() {
+		return this->height;
+	}
+};
+
+class RectangleArea: public Rectangle {
+
+	public:
+
+	void read_input() {
+		int W, H;
+		scanf("%d %d", &W, &H);
+		Rectangle::setWeight(W);
+		Rectangle::setHeight(H);
+	}
+
+	void display() {
+		printf("%d", Rectangle::getWeight()*Rectangle::getHeight());
+	}
+
+};
+
+
 int main() {
 
-	int W, H;
+	RectangleArea r_area;
 
-	scanf("%d %d", &W, &H);
+	r_area.read_input();
 
-	printf("%d %d\n%d", W, H, W*H);
+	r_area.Rectangle::display();
+
+	r_area.display();
 
 	return 0;
 }
